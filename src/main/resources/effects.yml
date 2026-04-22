@@ -1,0 +1,65 @@
+resource-version: 2
+
+effects:
+  bleed:
+    enabled: true
+    display-name: Bleed
+    category: harmful
+    max-stacks: 5
+    duration-ticks: 100
+    tick-interval-ticks: 20
+    tags:
+      - physical
+      - dot
+    on-apply:
+      - type: send_message
+        message: "You are bleeding. ({stacks} stack)"
+    on-tick:
+      - type: damage
+        base: 1.5
+        stack-scale: 0.85
+      - type: spawn_particles
+        particle: crit
+        count: 8
+        offset-x: 0.25
+        offset-y: 0.4
+        offset-z: 0.25
+        extra: 0.01
+    on-remove:
+      - type: send_message
+        message: "{effect} has faded."
+
+  arcane_ward:
+    enabled: true
+    display-name: Arcane Ward
+    category: beneficial
+    max-stacks: 3
+    duration-ticks: 140
+    tick-interval-ticks: 20
+    tags:
+      - magic
+      - ward
+    on-apply:
+      - type: send_message
+        message: "{effect} surrounds you."
+      - type: play_sound
+        sound: block.amethyst_block.chime
+        volume: 1.0
+        pitch: 1.35
+    on-tick:
+      - type: heal
+        base: 0.8
+        stack-scale: 0.35
+        potency-scale: 0.25
+      - type: spawn_particles
+        particle: enchant
+        count: 10
+        offset-x: 0.4
+        offset-y: 0.6
+        offset-z: 0.4
+        extra: 0.04
+    on-remove:
+      - type: play_sound
+        sound: block.respawn_anchor.deplete
+        volume: 0.8
+        pitch: 0.9

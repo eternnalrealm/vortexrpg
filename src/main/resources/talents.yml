@@ -1,0 +1,675 @@
+talents:
+  knight:
+    nodes:
+      iron_skin:
+        display-name: "Iron Skin"
+        description: "Your skin hardens like iron, reducing incoming damage."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          vitality: 2.0
+      battle_hardened:
+        display-name: "Battle Hardened"
+        description: "Years of combat temper your body and resolve."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - iron_skin
+        stat-bonuses:
+          vitality: 1.0
+          strength: 1.0
+      juggernaut:
+        display-name: "Juggernaut"
+        description: "You become an unstoppable force on the battlefield."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - iron_skin
+        stat-bonuses:
+          strength: 2.0
+      war_cry:
+        display-name: "War Cry"
+        description: "Your battle cry inspires ferocity in every swing."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - battle_hardened
+        stat-bonuses:
+          strength: 2.0
+          dexterity: 1.0
+      shield_wall:
+        display-name: "Shield Wall"
+        description: "An impenetrable wall of defense surrounds you."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - battle_hardened
+          - juggernaut
+        stat-bonuses:
+          vitality: 3.0
+      fortress:
+        display-name: "Fortress"
+        description: "Your body is a living fortress that absorbs punishment."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - juggernaut
+        stat-bonuses:
+          vitality: 2.0
+          spirit: 1.0
+      titans_grip:
+        display-name: "Titan's Grip"
+        description: "Wield massive weapons with terrifying ease."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - war_cry
+          - shield_wall
+        stat-bonuses:
+          strength: 3.0
+      unstoppable:
+        display-name: "Unstoppable"
+        description: "Nothing can slow your advance through enemy lines."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - shield_wall
+          - fortress
+        stat-bonuses:
+          vitality: 2.0
+          dexterity: 1.0
+      stalwart_defence:
+        display-name: "Stalwart Defence"
+        description: "Your defensive stance becomes nearly unbreakable."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - titans_grip
+        stat-bonuses:
+          vitality: 2.0
+          strength: 1.0
+          spirit: 1.0
+      colossus:
+        display-name: "Colossus"
+        description: "You ascend to become a true colossus of war."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - unstoppable
+        stat-bonuses:
+          strength: 3.0
+          vitality: 3.0
+
+  mage:
+    nodes:
+      arcane_focus:
+        display-name: "Arcane Focus"
+        description: "Sharpen your mind to channel arcane energy with precision."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          intelligence: 2.0
+      mana_surge:
+        display-name: "Mana Surge"
+        description: "A surge of mana flows through your veins, empowering spells."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - arcane_focus
+        stat-bonuses:
+          wisdom: 2.0
+      spell_mastery:
+        display-name: "Spell Mastery"
+        description: "Master the fundamental weave of all spell forms."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - arcane_focus
+        stat-bonuses:
+          intelligence: 2.0
+      ether_weave:
+        display-name: "Ether Weave"
+        description: "Weave ethereal threads into your spellcasting."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - mana_surge
+        stat-bonuses:
+          wisdom: 1.0
+          spirit: 1.0
+          intelligence: 1.0
+      crystalline_mind:
+        display-name: "Crystalline Mind"
+        description: "Your mind becomes a crystalline lattice of pure thought."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - mana_surge
+          - spell_mastery
+        stat-bonuses:
+          intelligence: 3.0
+      arcane_nova:
+        display-name: "Arcane Nova"
+        description: "Unleash devastating arcane explosions around you."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - spell_mastery
+        stat-bonuses:
+          intelligence: 2.0
+          strength: 1.0
+      void_sight:
+        display-name: "Void Sight"
+        description: "Peer into the void to perceive hidden truths."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - ether_weave
+          - crystalline_mind
+        stat-bonuses:
+          wisdom: 3.0
+      ley_lines:
+        display-name: "Ley Lines"
+        description: "Tap into ancient ley lines for boundless power."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - crystalline_mind
+          - arcane_nova
+        stat-bonuses:
+          intelligence: 2.0
+          wisdom: 1.0
+      prismatic_core:
+        display-name: "Prismatic Core"
+        description: "Your magical core fragments into a prismatic spectrum."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - void_sight
+        stat-bonuses:
+          intelligence: 2.0
+          wisdom: 2.0
+      ascended_intellect:
+        display-name: "Ascended Intellect"
+        description: "Your intellect transcends mortal limits."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - ley_lines
+        stat-bonuses:
+          intelligence: 3.0
+          wisdom: 3.0
+
+  ranger:
+    nodes:
+      swift_feet:
+        display-name: "Swift Feet"
+        description: "Your feet move with supernatural speed and grace."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          dexterity: 2.0
+      eagle_eye:
+        display-name: "Eagle Eye"
+        description: "Your vision sharpens to track prey across vast distances."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - swift_feet
+        stat-bonuses:
+          dexterity: 1.0
+          intelligence: 1.0
+      predator:
+        display-name: "Predator"
+        description: "Awaken the primal predator instinct within."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - swift_feet
+        stat-bonuses:
+          strength: 1.0
+          dexterity: 1.0
+      shadow_step:
+        display-name: "Shadow Step"
+        description: "Move through shadows, striking from unexpected angles."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - eagle_eye
+        stat-bonuses:
+          dexterity: 2.0
+          spirit: 1.0
+      wind_runner:
+        display-name: "Wind Runner"
+        description: "Run with the wind at your back, faster than thought."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - eagle_eye
+          - predator
+        stat-bonuses:
+          dexterity: 3.0
+      lethal_tempo:
+        display-name: "Lethal Tempo"
+        description: "Your attack rhythm reaches a lethal crescendo."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - predator
+        stat-bonuses:
+          dexterity: 1.0
+          strength: 2.0
+      ambush:
+        display-name: "Ambush"
+        description: "Set devastating ambushes that catch foes off guard."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - shadow_step
+          - wind_runner
+        stat-bonuses:
+          dexterity: 2.0
+          strength: 1.0
+      hunters_instinct:
+        display-name: "Hunter's Instinct"
+        description: "Primal instincts guide every strike to find weakness."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - wind_runner
+          - lethal_tempo
+        stat-bonuses:
+          dexterity: 2.0
+          vitality: 1.0
+      phantom_draw:
+        display-name: "Phantom Draw"
+        description: "Draw and loose arrows so fast they seem invisible."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - ambush
+        stat-bonuses:
+          dexterity: 3.0
+          strength: 1.0
+      true_shot:
+        display-name: "True Shot"
+        description: "Every arrow finds its mark with unerring precision."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - hunters_instinct
+        stat-bonuses:
+          dexterity: 3.0
+          intelligence: 1.0
+
+  cleric:
+    nodes:
+      blessed_touch:
+        display-name: "Blessed Touch"
+        description: "Your touch carries the warmth of divine blessing."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          spirit: 2.0
+      divine_ward:
+        display-name: "Divine Ward"
+        description: "A divine ward shields you from harm."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - blessed_touch
+        stat-bonuses:
+          spirit: 1.0
+          vitality: 1.0
+      holy_light:
+        display-name: "Holy Light"
+        description: "Channel holy radiance to mend wounds and smite evil."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - blessed_touch
+        stat-bonuses:
+          wisdom: 2.0
+      radiant_aura:
+        display-name: "Radiant Aura"
+        description: "An aura of radiant light surrounds and protects you."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - divine_ward
+        stat-bonuses:
+          spirit: 2.0
+          wisdom: 1.0
+      sacred_ground:
+        display-name: "Sacred Ground"
+        description: "Consecrate the ground beneath you, granting protection."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - divine_ward
+          - holy_light
+        stat-bonuses:
+          spirit: 1.0
+          vitality: 2.0
+      celestial_favour:
+        display-name: "Celestial Favour"
+        description: "The celestial heavens smile upon your devotion."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - holy_light
+        stat-bonuses:
+          wisdom: 2.0
+          intelligence: 1.0
+      spirit_bond:
+        display-name: "Spirit Bond"
+        description: "Forge an unbreakable bond with the spirit realm."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - radiant_aura
+          - sacred_ground
+        stat-bonuses:
+          spirit: 3.0
+      soulwarden:
+        display-name: "Soulwarden"
+        description: "Become a warden of souls, protecting the living and the dead."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - sacred_ground
+          - celestial_favour
+        stat-bonuses:
+          wisdom: 2.0
+          spirit: 1.0
+      empyrean_grace:
+        display-name: "Empyrean Grace"
+        description: "Move with the grace of celestial beings."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - spirit_bond
+        stat-bonuses:
+          spirit: 2.0
+          wisdom: 2.0
+      divine_ascent:
+        display-name: "Divine Ascent"
+        description: "Ascend to the pinnacle of divine power."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - soulwarden
+        stat-bonuses:
+          spirit: 3.0
+          wisdom: 3.0
+
+  beastmaster:
+    nodes:
+      feral_instinct:
+        display-name: "Feral Instinct"
+        description: "Your senses sharpen like a predator on the hunt."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          spirit: 2.0
+      pack_tactics:
+        display-name: "Pack Tactics"
+        description: "Fighting alongside beasts strengthens your strikes."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - feral_instinct
+        stat-bonuses:
+          strength: 1.0
+          spirit: 1.0
+      thick_hide:
+        display-name: "Thick Hide"
+        description: "Your skin toughens from years in the wild."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - feral_instinct
+        stat-bonuses:
+          vitality: 2.0
+      alpha_strike:
+        display-name: "Alpha Strike"
+        description: "Lead the pack with a devastating opening blow."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - pack_tactics
+        stat-bonuses:
+          strength: 2.0
+          dexterity: 1.0
+      den_mother:
+        display-name: "Den Mother"
+        description: "Your bond with the pack grants shared resilience."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - pack_tactics
+          - thick_hide
+        stat-bonuses:
+          vitality: 2.0
+          spirit: 1.0
+      territorial:
+        display-name: "Territorial"
+        description: "You fight harder when defending your ground."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - thick_hide
+        stat-bonuses:
+          strength: 1.0
+          vitality: 2.0
+      howl_of_the_wild:
+        display-name: "Howl of the Wild"
+        description: "A primal howl that fuels your savage fury."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - alpha_strike
+          - den_mother
+        stat-bonuses:
+          strength: 2.0
+          spirit: 1.0
+      beast_bond:
+        display-name: "Beast Bond"
+        description: "An unbreakable bond between you and your companions."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - den_mother
+          - territorial
+        stat-bonuses:
+          spirit: 2.0
+          vitality: 1.0
+      apex_predator:
+        display-name: "Apex Predator"
+        description: "You become the ultimate hunter — feared by all."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - howl_of_the_wild
+        stat-bonuses:
+          strength: 3.0
+          dexterity: 1.0
+      spirit_of_the_wild:
+        display-name: "Spirit of the Wild"
+        description: "The wild itself flows through you, granting primal power."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - beast_bond
+        stat-bonuses:
+          spirit: 3.0
+          wisdom: 2.0
+
+  engineer:
+    nodes:
+      blueprint_mastery:
+        display-name: "Blueprint Mastery"
+        description: "Every gadget starts with a perfect blueprint."
+        row: 0
+        column: 4
+        cost: 1
+        prerequisites: []
+        stat-bonuses:
+          intelligence: 2.0
+      scrap_armor:
+        display-name: "Scrap Armor"
+        description: "Improvised plating from salvaged materials."
+        row: 1
+        column: 3
+        cost: 1
+        prerequisites:
+          - blueprint_mastery
+        stat-bonuses:
+          vitality: 1.0
+          dexterity: 1.0
+      precision_tools:
+        display-name: "Precision Tools"
+        description: "Finer tools mean deadlier contraptions."
+        row: 1
+        column: 5
+        cost: 1
+        prerequisites:
+          - blueprint_mastery
+        stat-bonuses:
+          intelligence: 1.0
+          wisdom: 1.0
+      volatile_payload:
+        display-name: "Volatile Payload"
+        description: "Your explosives pack a bigger punch."
+        row: 2
+        column: 2
+        cost: 1
+        prerequisites:
+          - scrap_armor
+        stat-bonuses:
+          intelligence: 2.0
+          strength: 1.0
+      field_repairs:
+        display-name: "Field Repairs"
+        description: "Quickly patch yourself up between engagements."
+        row: 2
+        column: 4
+        cost: 1
+        prerequisites:
+          - scrap_armor
+          - precision_tools
+        stat-bonuses:
+          vitality: 2.0
+          wisdom: 1.0
+      overcharge:
+        display-name: "Overcharge"
+        description: "Push your devices past safe limits for maximum output."
+        row: 2
+        column: 6
+        cost: 1
+        prerequisites:
+          - precision_tools
+        stat-bonuses:
+          intelligence: 2.0
+          dexterity: 1.0
+      chain_reaction:
+        display-name: "Chain Reaction"
+        description: "One explosion triggers the next in a cascade."
+        row: 3
+        column: 3
+        cost: 1
+        prerequisites:
+          - volatile_payload
+          - field_repairs
+        stat-bonuses:
+          intelligence: 2.0
+          strength: 1.0
+      automated_defense:
+        display-name: "Automated Defense"
+        description: "Autonomous turrets guard your position."
+        row: 3
+        column: 5
+        cost: 1
+        prerequisites:
+          - field_repairs
+          - overcharge
+        stat-bonuses:
+          intelligence: 1.0
+          dexterity: 2.0
+      master_engineer:
+        display-name: "Master Engineer"
+        description: "The pinnacle of engineering — nothing is beyond your craft."
+        row: 4
+        column: 3
+        cost: 1
+        prerequisites:
+          - chain_reaction
+        stat-bonuses:
+          intelligence: 3.0
+          wisdom: 1.0
+      singularity_core:
+        display-name: "Singularity Core"
+        description: "Harness a miniature singularity to power all your devices."
+        row: 4
+        column: 5
+        cost: 1
+        prerequisites:
+          - automated_defense
+        stat-bonuses:
+          intelligence: 2.0
+          dexterity: 2.0

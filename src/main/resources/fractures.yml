@@ -1,0 +1,67 @@
+resource-version: 1
+
+profiles:
+  wild:
+    display-name: Wild Fracture
+    mob-types: []
+    boss-type: wither_skeleton
+    mob-health-multiplier: 1.0
+    mob-damage-multiplier: 1.0
+    mob-armor-bonus: 0.0
+    boss-health-multiplier: 1.0
+    boss-damage-multiplier: 1.0
+    mob-effects: []
+    boss-effects: []
+
+  skeletal_assault:
+    display-name: Skeletal Assault
+    mob-types:
+      - skeleton
+      - stray
+      - bogged
+    boss-type: wither_skeleton
+    mob-health-multiplier: 1.15
+    mob-damage-multiplier: 1.10
+    mob-armor-bonus: 1.0
+    boss-health-multiplier: 1.20
+    boss-damage-multiplier: 1.15
+    mob-effects:
+      - bleed
+    boss-effects:
+      - arcane_ward
+
+  necrotic_surge:
+    display-name: Necrotic Surge
+    mob-types:
+      - zombie
+      - husk
+      - drowned
+      - zombie_villager
+    boss-type: zombified_piglin
+    mob-health-multiplier: 1.25
+    mob-damage-multiplier: 1.15
+    mob-armor-bonus: 2.0
+    boss-health-multiplier: 1.35
+    boss-damage-multiplier: 1.25
+    mob-effects:
+      - bleed
+    boss-effects:
+      - bleed
+      - arcane_ward
+
+  arcane_tempest:
+    display-name: Arcane Tempest
+    mob-types:
+      - witch
+      - enderman
+      - blaze
+    boss-type: evoker
+    mob-health-multiplier: 1.10
+    mob-damage-multiplier: 1.25
+    mob-armor-bonus: 0.5
+    boss-health-multiplier: 1.25
+    boss-damage-multiplier: 1.35
+    mob-effects:
+      - arcane_ward
+    boss-effects:
+      - arcane_ward

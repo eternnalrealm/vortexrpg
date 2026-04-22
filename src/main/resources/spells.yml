@@ -1,0 +1,350 @@
+resource-version: 2
+
+spells:
+  ember_lance:
+    enabled: true
+    display-name: Ember Lance
+    cooldown-millis: 3500
+    min-level: 3
+    required-classes:
+      - mage
+    targeters:
+      - type: nearby_monster
+        range: 18
+        limit: 1
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: damage
+        base: 7.5
+        scaling-attribute: intelligence
+        scale: 1.15
+      - type: apply_effect
+        effect: bleed
+        target-filter: mobs
+        stacks: 1
+        duration-ticks: 100
+        potency: 1.0
+        refresh-duration: true
+      - type: spawn_particles
+        particle: flame
+        count: 28
+        offset-x: 0.22
+        offset-y: 0.38
+        offset-z: 0.22
+        extra: 0.01
+      - type: play_sound
+        sound: entity.blaze.shoot
+        volume: 1.0
+        pitch: 1.15
+      - type: send_message
+        message: "A burning lance tears through the air."
+
+  wardens_bloom:
+    enabled: true
+    display-name: Warden's Bloom
+    cooldown-millis: 6000
+    min-level: 4
+    required-classes:
+      - cleric
+    targeters:
+      - type: nearby_player
+        range: 8
+    mechanics:
+      - type: heal
+        base: 4.0
+        scaling-attribute: spirit
+        scale: 0.9
+      - type: apply_effect
+        effect: arcane_ward
+        target-filter: players
+        stacks: 1
+        duration-ticks: 120
+        potency: 1.0
+      - type: cleanse
+        target-filter: players
+        tags:
+          - physical
+          - dot
+        max-removals: 2
+      - type: spawn_particles
+        particle: happy_villager
+        count: 18
+        offset-x: 0.45
+        offset-y: 0.55
+        offset-z: 0.45
+        extra: 0.05
+      - type: play_sound
+        sound: block.amethyst_block.chime
+        volume: 0.9
+        pitch: 1.35
+      - type: send_message
+        message: "Life surges outward from your hands."
+
+  astral_convergence:
+    enabled: true
+    display-name: Astral Convergence
+    cooldown-millis: 7000
+    min-level: 8
+    required-classes:
+      - mage
+    targeters:
+      - type: nearby_player
+        range: 10
+      - type: nearby_monster
+        range: 12
+        limit: 3
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: heal
+        target-filter: players
+        base: 5.0
+        scaling-attribute: spirit
+        scale: 0.8
+      - type: damage
+        target-filter: mobs
+        base: 8.0
+        scaling-attribute: intelligence
+        scale: 1.1
+      - type: send_message
+        target-filter: self
+        message: "Astral currents split between aid and annihilation."
+      - type: spawn_particles
+        particle: enchant
+        count: 30
+        offset-x: 0.45
+        offset-y: 0.6
+        offset-z: 0.45
+        extra: 0.05
+      - type: play_sound
+        sound: entity.illusioner.cast_spell
+        volume: 1.0
+        pitch: 1.2
+
+  lucky_step:
+    enabled: false
+    display-name: Lucky Step
+    cooldown-millis: 2500
+    min-level: 2
+    targeters:
+      - type: self
+    conditions:
+      - type: chance_pass
+        chance: 0.75
+      - type: caster_moving
+    mechanics:
+      - type: send_message
+        message: "Momentum gathers around your stride."
+      - type: spawn_particles
+        particle: cloud
+        count: 16
+        offset-x: 0.2
+        offset-y: 0.1
+        offset-z: 0.2
+        extra: 0.02
+
+  # ── Class starter spells ─────────────────────────────────────────────────
+
+  fortify:
+    enabled: true
+    display-name: Fortify
+    cooldown-millis: 8000
+    min-level: 1
+    required-classes:
+      - knight
+    targeters:
+      - type: self
+    mechanics:
+      - type: apply_effect
+        effect: arcane_ward
+        target-filter: self
+        stacks: 3
+        duration-ticks: 160
+        potency: 1.2
+      - type: spawn_particles
+        particle: enchant
+        count: 24
+        offset-x: 0.5
+        offset-y: 0.6
+        offset-z: 0.5
+        extra: 0.03
+      - type: play_sound
+        sound: block.anvil.land
+        volume: 0.8
+        pitch: 1.4
+      - type: send_message
+        message: "Iron will fortifies your defences."
+
+  arcane_bolt:
+    enabled: true
+    display-name: Arcane Bolt
+    cooldown-millis: 2000
+    min-level: 1
+    required-classes:
+      - mage
+    targeters:
+      - type: nearby_monster
+        range: 20
+        limit: 1
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: damage
+        base: 5.0
+        scaling-attribute: intelligence
+        scale: 1.0
+      - type: spawn_particles
+        particle: dragon_breath
+        count: 16
+        offset-x: 0.18
+        offset-y: 0.3
+        offset-z: 0.18
+        extra: 0.01
+      - type: play_sound
+        sound: entity.elder_guardian.ambient
+        volume: 0.7
+        pitch: 1.6
+      - type: send_message
+        message: "An arcane bolt streaks toward your target."
+
+  hunter_mark:
+    enabled: true
+    display-name: Hunter's Mark
+    cooldown-millis: 4500
+    min-level: 1
+    required-classes:
+      - ranger
+    targeters:
+      - type: nearby_monster
+        range: 24
+        limit: 1
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: damage
+        base: 4.0
+        scaling-attribute: dexterity
+        scale: 0.85
+      - type: apply_effect
+        effect: bleed
+        target-filter: mobs
+        stacks: 2
+        duration-ticks: 120
+        potency: 1.1
+        refresh-duration: true
+      - type: spawn_particles
+        particle: crit
+        count: 20
+        offset-x: 0.2
+        offset-y: 0.4
+        offset-z: 0.2
+        extra: 0.02
+      - type: play_sound
+        sound: entity.arrow.hit_player
+        volume: 0.9
+        pitch: 1.2
+      - type: send_message
+        message: "You mark your prey — they cannot escape."
+
+  mend:
+    enabled: true
+    display-name: Mend
+    cooldown-millis: 5000
+    min-level: 1
+    required-classes:
+      - cleric
+    targeters:
+      - type: self
+    mechanics:
+      - type: heal
+        base: 5.0
+        scaling-attribute: spirit
+        scale: 1.1
+      - type: spawn_particles
+        particle: happy_villager
+        count: 12
+        offset-x: 0.3
+        offset-y: 0.5
+        offset-z: 0.3
+        extra: 0.04
+      - type: play_sound
+        sound: block.amethyst_cluster.place
+        volume: 0.8
+        pitch: 1.2
+      - type: send_message
+        message: "Divine light closes your wounds."
+
+  beast_call:
+    enabled: true
+    display-name: Beast Call
+    cooldown-millis: 9000
+    min-level: 1
+    required-classes:
+      - beastmaster
+    targeters:
+      - type: nearby_monster
+        range: 10
+        limit: 5
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: damage
+        base: 3.5
+        scaling-attribute: strength
+        scale: 0.7
+      - type: apply_effect
+        effect: bleed
+        target-filter: mobs
+        stacks: 1
+        duration-ticks: 80
+        potency: 0.9
+      - type: spawn_particles
+        particle: poof
+        count: 18
+        offset-x: 0.4
+        offset-y: 0.5
+        offset-z: 0.4
+        extra: 0.02
+      - type: play_sound
+        sound: entity.wolf.howl
+        volume: 1.0
+        pitch: 0.9
+      - type: send_message
+        message: "Your battle cry summons the fury of the wilds."
+
+  deploy_turret:
+    enabled: true
+    display-name: Deploy Turret
+    cooldown-millis: 12000
+    min-level: 1
+    required-classes:
+      - engineer
+    targeters:
+      - type: nearby_monster
+        range: 12
+        limit: 3
+    conditions:
+      - type: has_target
+    mechanics:
+      - type: damage
+        base: 6.0
+        scaling-attribute: intelligence
+        scale: 0.95
+      - type: spawn_particles
+        particle: electric_spark
+        count: 22
+        offset-x: 0.3
+        offset-y: 0.4
+        offset-z: 0.3
+        extra: 0.03
+      - type: play_sound
+        sound: block.piston.extend
+        volume: 0.9
+        pitch: 1.3
+      - type: play_sound
+        sound: entity.lightning_bolt.thunder
+        volume: 0.4
+        pitch: 1.8
+      - type: send_message
+        message: "Automated turret deployed — engaging targets."

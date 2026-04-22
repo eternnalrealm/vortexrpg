@@ -1,0 +1,193 @@
+resource-version: 2
+
+items:
+  beast_companion_sigil:
+    material: LEAD
+    name: Companion Sigil
+    lore:
+      - A command focus for Beast Mastery bonds.
+    glow: true
+
+  alpha_command_horn:
+    material: GOAT_HORN
+    name: Alpha Command
+    lore:
+      - Rally your bonded companion into a focused assault.
+    glow: true
+
+  engineering_console_core:
+    material: REDSTONE
+    name: Engineering Console
+    lore:
+      - Field telemetry for deployed gadgets and crafted kits.
+    glow: true
+
+  mage_apprentice_staff:
+    material: BLAZE_ROD
+    name: Apprentice Staff
+    lore:
+      - "§7» §bLeft-Click: §fFire an arcane bolt (basic attack)."
+      - "§7» §dRight-Click: §fCast your equipped spell."
+      - ""
+      - "§8Issued to every fresh Mage initiate."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      intelligence: 2
+      wisdom: 1
+    ability:
+      required-class: mage
+      left-click:
+        use-spell: mage_staff_bolt
+        cooldown-millis: 650
+      right-click:
+        use-active-spell: true
+
+  knight_iron_resolve:
+    material: IRON_SWORD
+    name: Iron Resolve
+    lore:
+      - "§7» §cLeft-Click: §fNormal sword strike (melee)."
+      - "§7» §dRight-Click: §fCast your equipped spell."
+      - ""
+      - "§8Starter blade issued to every Knight initiate."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      strength: 3
+      vitality: 2
+    ability:
+      required-class: knight
+      right-click:
+        use-active-spell: true
+
+  ranger_hunting_bow:
+    material: BOW
+    name: Hunting Bow
+    lore:
+      - "§7» §aLeft-Click: §fCast your equipped spell."
+      - "§7» §eRight-Click: §fDraw & loose an arrow (basic attack)."
+      - ""
+      - "§8Starter shortbow issued to every Ranger scout."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      dexterity: 3
+      vitality: 1
+    ability:
+      required-class: ranger
+      left-click:
+        use-active-spell: true
+
+  cleric_devotion_tome:
+    material: BOOK
+    name: Devotion Tome
+    lore:
+      - "§7» §fLeft-Click: §fChannel §bMend §fto heal (basic attack)."
+      - "§7» §dRight-Click: §fCast your equipped spell."
+      - ""
+      - "§8Sacred text carried by every Cleric initiate."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      spirit: 3
+      wisdom: 2
+    ability:
+      required-class: cleric
+      left-click:
+        use-spell: mend
+        cooldown-millis: 4500
+      right-click:
+        use-active-spell: true
+
+  beastmaster_fang_totem:
+    material: BONE
+    name: Fang Totem
+    lore:
+      - "§7» §6Left-Click: §fUnleash §eBeast Call §f(basic attack)."
+      - "§7» §dRight-Click: §fCast your equipped spell."
+      - ""
+      - "§8Carved totem bonded to wild companions."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      strength: 2
+      vitality: 3
+    ability:
+      required-class: beastmaster
+      left-click:
+        use-spell: beast_call
+        cooldown-millis: 5000
+      right-click:
+        use-active-spell: true
+
+  engineer_field_kit:
+    material: CLOCK
+    name: Field Kit
+    lore:
+      - "§7» §bLeft-Click: §fDeploy targeting turret (basic attack)."
+      - "§7» §dRight-Click: §fCast your equipped spell."
+      - ""
+      - "§8Standard-issue kit for Engineer recruits."
+    glow: true
+    locked: true
+    enchantments:
+      unbreaking: 3
+    attributes:
+      intelligence: 2
+      dexterity: 2
+    ability:
+      required-class: engineer
+      left-click:
+        use-spell: deploy_turret
+        cooldown-millis: 6000
+      right-click:
+        use-active-spell: true
+
+  # Example override:
+  # turret_kit:
+  #   material: DISPENSER
+  #   name: Ironwatch Turret Kit
+  #   lore:
+  #     - Right-click a block to deploy a temporary auto-turret.
+  #     - This definition overrides the built-in look for the same id.
+  #   custom-model-data: 1001
+  #   glow: true
+  #
+  # Example relic:
+  # apprentice_focus:
+  #   material: BLAZE_ROD
+  #   name: Apprentice Focus
+  #   lore:
+  #     - A class-bound relic tuned for arcane initiates.
+  #   glow: true
+  #   enchantments:
+  #     unbreaking: 3
+  #   attributes:
+  #     intelligence: 4
+  #     wisdom: 2
+  #   attribute-multipliers:
+  #     spirit: 0.10
+  #   ability:
+  #     required-class: mage
+  #     left-click:
+  #       use-spell: arcane_bolt
+  #       cooldown-millis: 800
+  #     right-click:
+  #       use-active-spell: true
+  #       use-effect: arcane_focus
+  #       effect-stacks: 1
+  #       effect-duration-ticks: 120
+  #       effect-potency: 1.25
+  #       effect-refresh-duration: true
+  #       cooldown-millis: 12000

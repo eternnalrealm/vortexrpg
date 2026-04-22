@@ -1,0 +1,168 @@
+# ═══════════════════════════════════════════════════════════
+#  VortexRPG — Quest Definitions
+#  Each quest entry defines objectives, rewards, and chains.
+# ═══════════════════════════════════════════════════════════
+
+quests:
+
+  first_blood:
+    name: "First Blood"
+    description: "Prove your worth by slaying hostile creatures near spawn."
+    required-level: 1
+    repeatable: false
+    chain-next: gathering_basics
+    objectives:
+      kill_zombies:
+        type: KILL_MOB
+        target: zombie
+        amount: 5
+        description: "Slay 5 Zombies"
+      kill_skeletons:
+        type: KILL_MOB
+        target: skeleton
+        amount: 3
+        description: "Slay 3 Skeletons"
+    rewards:
+      - type: EXPERIENCE
+        amount: 150
+      - type: CURRENCY
+        amount: 50.0
+
+  gathering_basics:
+    name: "Gathering Basics"
+    description: "Learn the fundamentals of resource gathering."
+    required-level: 2
+    required-quest: first_blood
+    repeatable: false
+    chain-next: the_deep_descent
+    objectives:
+      mine_stone:
+        type: MINE_BLOCK
+        target: stone
+        amount: 20
+        description: "Mine 20 Stone"
+      mine_iron:
+        type: MINE_BLOCK
+        target: iron_ore
+        amount: 8
+        description: "Mine 8 Iron Ore"
+      gather_wood:
+        type: MINE_BLOCK
+        target: oak_log
+        amount: 16
+        description: "Chop 16 Oak Logs"
+    rewards:
+      - type: EXPERIENCE
+        amount: 250
+      - type: CURRENCY
+        amount: 80.0
+
+  the_deep_descent:
+    name: "The Deep Descent"
+    description: "Venture into the depths and collect precious ores."
+    required-level: 4
+    required-quest: gathering_basics
+    repeatable: false
+    chain-next: hunters_mark
+    objectives:
+      mine_diamonds:
+        type: MINE_BLOCK
+        target: diamond_ore
+        amount: 3
+        description: "Mine 3 Diamond Ore"
+      mine_deepslate:
+        type: MINE_BLOCK
+        target: deepslate
+        amount: 32
+        description: "Mine 32 Deepslate"
+      kill_creepers:
+        type: KILL_MOB
+        target: creeper
+        amount: 5
+        description: "Slay 5 Creepers"
+    rewards:
+      - type: EXPERIENCE
+        amount: 400
+      - type: CURRENCY
+        amount: 150.0
+
+  hunters_mark:
+    name: "Hunter's Mark"
+    description: "Track and eliminate dangerous creatures in the wilds."
+    required-level: 6
+    required-quest: the_deep_descent
+    repeatable: false
+    chain-next: realm_warden
+    objectives:
+      kill_spiders:
+        type: KILL_MOB
+        target: spider
+        amount: 10
+        description: "Slay 10 Spiders"
+      kill_endermen:
+        type: KILL_MOB
+        target: enderman
+        amount: 3
+        description: "Slay 3 Endermen"
+      craft_bow:
+        type: CRAFT_ITEM
+        target: bow
+        amount: 1
+        description: "Craft a Bow"
+    rewards:
+      - type: EXPERIENCE
+        amount: 600
+      - type: CURRENCY
+        amount: 250.0
+
+  realm_warden:
+    name: "Realm Warden"
+    description: "Defend the realm against the encroaching darkness."
+    required-level: 8
+    required-quest: hunters_mark
+    repeatable: false
+    objectives:
+      kill_blazes:
+        type: KILL_MOB
+        target: blaze
+        amount: 5
+        description: "Slay 5 Blazes"
+      kill_wither_skeletons:
+        type: KILL_MOB
+        target: wither_skeleton
+        amount: 3
+        description: "Slay 3 Wither Skeletons"
+      mine_obsidian:
+        type: MINE_BLOCK
+        target: obsidian
+        amount: 10
+        description: "Mine 10 Obsidian"
+      fish_pufferfish:
+        type: FISH_ITEM
+        target: pufferfish
+        amount: 2
+        description: "Catch 2 Pufferfish"
+    rewards:
+      - type: EXPERIENCE
+        amount: 1000
+      - type: CURRENCY
+        amount: 500.0
+
+  # ─── Repeatable daily quest ────────────────────────────
+  daily_hunt:
+    name: "Daily Hunt"
+    description: "A standing bounty for clearing hostile mobs."
+    required-level: 1
+    repeatable: true
+    cooldown-seconds: 86400
+    objectives:
+      kill_hostiles:
+        type: KILL_MOB
+        target: zombie
+        amount: 10
+        description: "Slay 10 Zombies"
+    rewards:
+      - type: EXPERIENCE
+        amount: 100
+      - type: CURRENCY
+        amount: 30.0

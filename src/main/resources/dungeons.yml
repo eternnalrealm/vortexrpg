@@ -1,0 +1,66 @@
+dungeons:
+  crypt_of_the_fallen:
+    display-name: "<dark_purple>Crypt of the Fallen</dark_purple>"
+    template-name: crypt_of_the_fallen
+    min-level: 5
+    max-party-size: 4
+    time-limit-seconds: 600
+    boss-id: crypt_guardian
+    completion-reward: 750.0
+    reward-items:
+      - arcane_shard
+      - stabilized_relic
+    waves:
+      wave_1:
+        mob-type: ZOMBIE
+        mob-count: 6
+        mob-health: 40.0
+        mob-damage-multiplier: 1.0
+        spawn-delay-ticks: 40
+      wave_2:
+        mob-type: SKELETON
+        mob-count: 8
+        mob-health: 50.0
+        mob-damage-multiplier: 1.2
+        spawn-delay-ticks: 40
+      wave_3:
+        mob-type: WITHER_SKELETON
+        mob-count: 4
+        mob-health: 80.0
+        mob-damage-multiplier: 1.5
+        spawn-delay-ticks: 60
+  infernal_depths:
+    display-name: "<red>Infernal Depths</red>"
+    template-name: infernal_depths
+    min-level: 15
+    max-party-size: 4
+    time-limit-seconds: 900
+    boss-id: infernal_lord
+    completion-reward: 1500.0
+    reward-items:
+      - tainted_essence
+    waves:
+      wave_1:
+        mob-type: BLAZE
+        mob-count: 8
+        mob-health: 60.0
+        mob-damage-multiplier: 1.5
+        spawn-delay-ticks: 40
+      wave_2:
+        mob-type: PIGLIN_BRUTE
+        mob-count: 6
+        mob-health: 100.0
+        mob-damage-multiplier: 2.0
+        spawn-delay-ticks: 60
+      wave_3:
+        mob-type: WITHER_SKELETON
+        mob-count: 10
+        mob-health: 80.0
+        mob-damage-multiplier: 1.8
+        spawn-delay-ticks: 40
+      wave_4:
+        mob-type: BLAZE
+        mob-count: 12
+        mob-health: 70.0
+        mob-damage-multiplier: 2.0
+        spawn-delay-ticks: 30

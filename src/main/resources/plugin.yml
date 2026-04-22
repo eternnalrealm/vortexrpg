@@ -1,0 +1,632 @@
+name: ${name}
+version: ${version}
+main: io.vortexcore.VortexCorePlugin
+description: ${description}
+api-version: "1.21"
+folia-supported: true
+load: POSTWORLD
+website: http://eternalrealm.uk
+softdepend:
+  - Citizens
+  - WorldGuard
+  - PlaceholderAPI
+  - Vault
+authors:
+  - "EternalRealm\u2122"
+commands:
+  expeditions:
+    description: Expedition board, contracts, breach finales and party management
+    usage: /expeditions [open|status|leaderboard|breach|rewards|quartermaster|party|abandon]
+  fracture:
+    description: Fracture rift tracking, gateway network and realm administration
+    usage: /fracture [status|list|profiles|map|gateway|seed|suppress|breach|tp]
+  class:
+    description: Class selection, inspection and ascension paths
+    usage: /class [open|info|specs|choose|ascend|admin]
+  skills:
+    description: Skill atlas, spell management and point allocation
+    usage: /skills [open|points|unlock|spells|equip]
+  stats:
+    description: Character stats and progression overview
+    usage: /stats [open|text|admin]
+  adventure:
+    description: Adventure board objectives and seasonal reward tracks
+    usage: /adventure [open|status|season]
+  professions:
+    description: Profession ledger, crafting stations and gathering
+    usage: /professions [open|stats|station]
+  cast:
+    description: Cast your equipped or selected spell
+    usage: /cast [spell]
+  spell:
+    description: Spellbook overview, equip, cast and forge access
+    usage: /spell [open|menu|info|list|cast [spell]|equip <spell>|forge]
+  quest:
+    description: Quest board, quest tracking and quest management
+    usage: /quest [open|list|start|abandon|progress|log|info|reload]
+  talent:
+    description: Talent tree, passive upgrades and talent point management
+    usage: /talent [open|points|info|reset|admin]
+  vortex:
+    description: VortexRPG admin toolkit — forges, hot-reload, diagnostics and integrations
+    usage: /vortex [subcommand]
+  vboss:
+    description: Custom boss encounters — summon, browse and manage world bosses
+    usage: /vboss [open|list|spawn|summon|clear|info|edit|reload]
+  vdungeon:
+    description: Dungeon instances — browse, enter, and manage instanced dungeons
+    usage: /vdungeon [open|list|enter|leave|info|reload]
+  auction:
+    description: Auction house — buy, sell, search and manage player listings
+    usage: /auction [browse|sell|search|my]
+  party:
+    description: Party management — roles, chat, ready checks, summon and GUI
+    usage: /party [create|invite|accept|decline|kick|promote|demote|transfer|leave|info|gui|chat|toggle|summon|ready|rename|disband|list]
+  pc:
+    description: Send a message to your party
+    usage: /pc <message>
+  vrp:
+    description: VortexRPG unified command hub — all features under one root
+    usage: /vrp [class|skills|stats|cast|quest|talent|professions|adventure|fracture|expeditions|boss|dungeon|auction|party|admin]
+    aliases: [vortexrpg, vrpg]
+permissions:
+  vortex.player:
+    description: Grants access to all standard VortexRPG player commands
+    default: true
+    children:
+      vortex.player.class: true
+      vortex.player.skills: true
+      vortex.player.stats: true
+      vortex.player.adventure: true
+      vortex.player.professions: true
+      vortex.player.cast: true
+      vortex.player.expeditions: true
+      vortex.player.fracture: true
+      vortex.player.quest: true
+      vortex.player.talent: true
+      vortex.player.boss: true
+      vortex.player.dungeon: true
+      vortex.player.auction: true
+      vortex.player.party: true
+  vortex.player.class:
+    description: Grants access to class command features
+    default: false
+    children:
+      vortex.player.class.open: true
+      vortex.player.class.info: true
+      vortex.player.class.choose: true
+      vortex.player.class.specs: true
+      vortex.player.class.ascend: true
+      vortex.player.class.swap: true
+      vortex.player.class.kit: true
+  vortex.player.class.open:
+    description: Allows opening the class menu
+    default: false
+  vortex.player.class.info:
+    description: Allows viewing class info
+    default: false
+  vortex.player.class.choose:
+    description: Allows choosing a class
+    default: false
+  vortex.player.class.specs:
+    description: Allows viewing class ascension/spec options
+    default: false
+  vortex.player.class.ascend:
+    description: Allows locking in a class ascension
+    default: false
+  vortex.player.class.swap:
+    description: Allows opening the class swap GUI (requires class-selection.allow-player-swap in config)
+    default: false
+  vortex.player.class.kit:
+    description: Allows re-issuing your class starter kit via /vrp class kit
+    default: true
+  vortex.player.skills:
+    description: Grants access to skill command features
+    default: false
+    children:
+      vortex.player.skills.open: true
+      vortex.player.skills.points: true
+      vortex.player.skills.unlock: true
+      vortex.player.skills.spells: true
+      vortex.player.skills.equip: true
+  vortex.player.skills.open:
+    description: Allows opening the skill menu
+    default: false
+  vortex.player.skills.points:
+    description: Allows viewing unspent skill points
+    default: false
+  vortex.player.skills.unlock:
+    description: Allows unlocking skills
+    default: false
+  vortex.player.skills.spells:
+    description: Allows viewing unlocked spells
+    default: false
+  vortex.player.skills.equip:
+    description: Allows equipping unlocked spells
+    default: false
+  vortex.player.stats:
+    description: Allows viewing VortexRPG stats
+    default: false
+  vortex.player.adventure:
+    description: Grants access to adventure board features
+    default: false
+    children:
+      vortex.player.adventure.open: true
+      vortex.player.adventure.status: true
+      vortex.player.adventure.season: true
+  vortex.player.adventure.open:
+    description: Allows opening the adventure board
+    default: false
+  vortex.player.adventure.status:
+    description: Allows viewing adventure board progress in chat
+    default: false
+  vortex.player.adventure.season:
+    description: Allows opening the seasonal reward track
+    default: false
+  vortex.player.professions:
+    description: Grants access to profession command features
+    default: false
+    children:
+      vortex.player.professions.open: true
+      vortex.player.professions.stats: true
+      vortex.player.professions.station: true
+      vortex.player.professions.gather: true
+      vortex.player.professions.craft: true
+  vortex.player.professions.open:
+    description: Allows opening the profession ledger
+    default: false
+  vortex.player.professions.stats:
+    description: Allows viewing profession stats
+    default: false
+  vortex.player.professions.station:
+    description: Allows opening profession crafting stations
+    default: false
+  vortex.player.professions.gather:
+    description: Allows gaining profession XP from gathering actions
+    default: false
+  vortex.player.professions.craft:
+    description: Allows crafting profession recipes
+    default: false
+  vortex.player.cast:
+    description: Allows casting Vortex spells
+    default: false
+  vortex.player.quest:
+    description: Grants access to quest command features
+    default: false
+    children:
+      vortex.player.quest.open: true
+      vortex.player.quest.list: true
+      vortex.player.quest.start: true
+      vortex.player.quest.abandon: true
+      vortex.player.quest.progress: true
+      vortex.player.quest.log: true
+      vortex.player.quest.info: true
+  vortex.player.quest.open:
+    description: Allows opening the quest board
+    default: false
+  vortex.player.quest.list:
+    description: Allows listing available quests
+    default: false
+  vortex.player.quest.start:
+    description: Allows starting quests
+    default: false
+  vortex.player.quest.abandon:
+    description: Allows abandoning active quests
+    default: false
+  vortex.player.quest.progress:
+    description: Allows viewing active quest progress
+    default: false
+  vortex.player.quest.log:
+    description: Allows viewing the completed quest log
+    default: false
+  vortex.player.quest.info:
+    description: Allows viewing quest details
+    default: false
+  vortex.player.fracture:
+    description: Grants access to player fracture tracking features
+    default: false
+    children:
+      vortex.player.fracture.map: true
+      vortex.player.fracture.gateway: true
+  vortex.player.fracture.map:
+    description: Allows receiving fracture tracking maps
+    default: false
+  vortex.player.fracture.gateway:
+    description: Allows using fracture gateway travel and menus
+    default: false
+  vortex.player.expeditions:
+    description: Grants access to expedition command features
+    default: false
+    children:
+      vortex.player.expeditions.open: true
+      vortex.player.expeditions.status: true
+      vortex.player.expeditions.leaderboard: true
+      vortex.player.expeditions.breach: true
+      vortex.player.expeditions.rewards: true
+      vortex.player.expeditions.quartermaster: true
+      vortex.player.expeditions.abandon: true
+      vortex.player.expeditions.party: true
+  vortex.player.expeditions.open:
+    description: Allows opening the expedition board
+    default: false
+  vortex.player.expeditions.status:
+    description: Allows viewing expedition status
+    default: false
+  vortex.player.expeditions.leaderboard:
+    description: Allows viewing expedition leaderboards
+    default: false
+  vortex.player.expeditions.breach:
+    description: Allows launching or rejoining breach finales
+    default: false
+  vortex.player.expeditions.rewards:
+    description: Allows opening breach reward caches
+    default: false
+  vortex.player.expeditions.quartermaster:
+    description: Allows using the breach quartermaster
+    default: false
+  vortex.player.expeditions.abandon:
+    description: Allows abandoning expedition contracts
+    default: false
+  vortex.player.expeditions.party:
+    description: Grants access to expedition party features
+    default: false
+    children:
+      vortex.player.expeditions.party.info: true
+      vortex.player.expeditions.party.create: true
+      vortex.player.expeditions.party.invite: true
+      vortex.player.expeditions.party.accept: true
+      vortex.player.expeditions.party.decline: true
+      vortex.player.expeditions.party.leave: true
+      vortex.player.expeditions.party.disband: true
+  vortex.player.expeditions.party.info:
+    description: Allows viewing expedition party info
+    default: false
+  vortex.player.expeditions.party.create:
+    description: Allows creating expedition parties
+    default: false
+  vortex.player.expeditions.party.invite:
+    description: Allows inviting players to expedition parties
+    default: false
+  vortex.player.expeditions.party.accept:
+    description: Allows accepting expedition party invites
+    default: false
+  vortex.player.expeditions.party.decline:
+    description: Allows declining expedition party invites
+    default: false
+  vortex.player.expeditions.party.leave:
+    description: Allows leaving expedition parties
+    default: false
+  vortex.player.expeditions.party.disband:
+    description: Allows disbanding expedition parties
+    default: false
+  vortex.admin.fracture:
+    description: Grants access to fracture administration features
+    default: false
+    children:
+      vortex.admin.fracture.status: true
+      vortex.player.fracture.map: true
+      vortex.admin.fracture.seed: true
+      vortex.admin.fracture.suppress: true
+      vortex.admin.fracture.breach: true
+      vortex.admin.fracture.tp: true
+      vortex.admin.fracture.gateway: true
+  vortex.admin.fracture.status:
+    description: Allows viewing fracture status with admin command
+    default: false
+  vortex.admin.fracture.seed:
+    description: Allows seeding fractures
+    default: false
+  vortex.admin.fracture.suppress:
+    description: Allows suppressing fractures
+    default: false
+  vortex.admin.fracture.breach:
+    description: Allows forcing breach instances
+    default: false
+  vortex.admin.fracture.tp:
+    description: Allows teleporting to named fractures
+    default: false
+  vortex.admin.scoreboard:
+    description: Allows toggling the sidebar scoreboard on or off
+    default: op
+  vortex.admin.fracture.gateway:
+    description: Allows creating, listing and deleting fracture gateways
+    default: false
+  vortex.admin:
+    description: Grants access to all VortexRPG administrative commands
+    default: op
+    children:
+      vortex.admin.class.set: true
+      vortex.admin.class.kit: true
+      vortex.admin.classes: true
+      vortex.admin.stats.xp: true
+      vortex.admin.spell.new: true
+      vortex.admin.spells: true
+      vortex.admin.effects: true
+      vortex.admin.items: true
+      vortex.admin.reloadspells: true
+      vortex.admin.listspells: true
+      vortex.admin.reloadeffects: true
+      vortex.admin.listeffects: true
+      vortex.admin.reloaditems: true
+      vortex.admin.listitems: true
+      vortex.admin.diagnostics: true
+      vortex.admin.persistence: true
+      vortex.admin.validate: true
+      vortex.admin.citizens: true
+      vortex.admin.dump: true
+      vortex.admin.fracture: true
+      vortex.admin.quest: true
+      vortex.admin.talent: true
+      vortex.admin.boss: true
+      vortex.admin.dungeon: true
+      vortex.admin.party: true
+      vortex.admin.scoreboard: true
+      vortex.bypass.region-checks: true
+  vortex.admin.class.set:
+    description: Allows forcing a player's class selection
+    default: false
+  vortex.admin.class.kit:
+    description: Allows issuing a class kit to any player via /vrp class admin kit
+    default: false
+  vortex.admin.classes:
+    description: Allows opening and using the class forge
+    default: false
+  vortex.admin.stats.xp:
+    description: Allows adding, removing and setting player RPG XP
+    default: false
+  vortex.admin.spell.new:
+    description: Allows creating a new spell template via /vrp admin spell new
+    default: false
+  vortex.admin.spells:
+    description: Allows opening the spell forge
+    default: false
+  vortex.admin.effects:
+    description: Allows opening the effect forge
+    default: false
+  vortex.admin.items:
+    description: Allows opening the item forge
+    default: false
+  vortex.admin.reloadspells:
+    description: Allows reloading custom spells
+    default: false
+  vortex.admin.listspells:
+    description: Allows listing registered spells
+    default: false
+  vortex.admin.reloadeffects:
+    description: Allows reloading custom effects
+    default: false
+  vortex.admin.listeffects:
+    description: Allows listing registered effects
+    default: false
+  vortex.admin.reloaditems:
+    description: Allows reloading custom items
+    default: false
+  vortex.admin.listitems:
+    description: Allows listing registered items
+    default: false
+  vortex.admin.diagnostics:
+    description: Allows viewing live server and region diagnostics
+    default: false
+  vortex.admin.persistence:
+    description: Allows viewing persistence health and degradation state
+    default: false
+  vortex.admin.validate:
+    description: Allows running the live VortexRPG validation snapshot
+    default: false
+  vortex.admin.citizens:
+    description: Allows binding and inspecting Citizens NPC integrations
+    default: false
+  vortex.admin.dump:
+    description: Allows generating sanitized VortexRPG support dumps
+    default: false
+  vortex.bypass.region-checks:
+    description: Allows bypassing integrated region protection checks
+    default: false
+  vortex.admin.quest:
+    description: Grants access to quest administration features
+    default: false
+    children:
+      vortex.admin.quest.reload: true
+  vortex.admin.quest.reload:
+    description: Allows reloading quest definitions
+    default: false
+  vortex.player.talent:
+    description: Grants access to talent command features
+    default: false
+    children:
+      vortex.player.talent.open: true
+      vortex.player.talent.points: true
+      vortex.player.talent.info: true
+      vortex.player.talent.reset: true
+  vortex.player.talent.open:
+    description: Allows opening the talent tree
+    default: false
+  vortex.player.talent.points:
+    description: Allows viewing available talent points
+    default: false
+  vortex.player.talent.info:
+    description: Allows viewing talent node details
+    default: false
+  vortex.player.talent.reset:
+    description: Allows resetting the talent tree
+    default: false
+  vortex.admin.talent:
+    description: Grants access to talent administration
+    default: false
+    children:
+      vortex.admin.talent.grant: true
+      vortex.admin.talent.reload: true
+  vortex.admin.talent.grant:
+    description: Allows granting talent points to players
+    default: false
+  vortex.admin.talent.reload:
+    description: Allows reloading the talent registry
+    default: false
+  vortex.player.boss:
+    description: Grants access to boss command features
+    default: false
+    children:
+      vortex.player.boss.open: true
+      vortex.player.boss.list: true
+  vortex.player.boss.open:
+    description: Allows opening the boss encounter menu
+    default: false
+  vortex.player.boss.list:
+    description: Allows listing registered bosses
+    default: false
+  vortex.admin.boss:
+    description: Grants access to boss administration features
+    default: false
+    children:
+      vortex.admin.boss.spawn: true
+      vortex.admin.boss.summon: true
+      vortex.admin.boss.clear: true
+      vortex.admin.boss.info: true
+      vortex.admin.boss.edit: true
+      vortex.admin.boss.reload: true
+  vortex.admin.boss.spawn:
+    description: Allows spawning bosses via command
+    default: false
+  vortex.admin.boss.summon:
+    description: Allows force-summoning bosses (bypasses cooldown and level)
+    default: false
+  vortex.admin.boss.clear:
+    description: Allows despawning all active bosses
+    default: false
+  vortex.admin.boss.info:
+    description: Allows viewing detailed boss information
+    default: false
+  vortex.admin.boss.edit:
+    description: Allows editing boss definitions in-game
+    default: false
+  vortex.admin.boss.reload:
+    description: Allows reloading the boss registry
+    default: false
+  vortex.player.dungeon:
+    description: Grants access to dungeon command features
+    default: false
+    children:
+      vortex.player.dungeon.open: true
+      vortex.player.dungeon.list: true
+      vortex.player.dungeon.enter: true
+      vortex.player.dungeon.leave: true
+  vortex.player.dungeon.open:
+    description: Allows opening the dungeon browser
+    default: false
+  vortex.player.dungeon.list:
+    description: Allows listing available dungeons
+    default: false
+  vortex.player.dungeon.enter:
+    description: Allows entering dungeons
+    default: false
+  vortex.player.dungeon.leave:
+    description: Allows leaving dungeons
+    default: false
+  vortex.admin.dungeon:
+    description: Grants access to dungeon administration features
+    default: false
+    children:
+      vortex.admin.dungeon.info: true
+      vortex.admin.dungeon.reload: true
+  vortex.admin.dungeon.info:
+    description: Allows viewing active dungeon instance info
+    default: false
+  vortex.admin.dungeon.reload:
+    description: Allows reloading the dungeon registry
+    default: false
+  vortex.player.auction:
+    description: Grants access to auction house features
+    default: false
+    children:
+      vortex.player.auction.browse: true
+      vortex.player.auction.sell: true
+      vortex.player.auction.my: true
+      vortex.player.auction.search: true
+  vortex.player.auction.browse:
+    description: Allows browsing the auction house
+    default: false
+  vortex.player.auction.sell:
+    description: Allows listing items for sale
+    default: false
+  vortex.player.auction.my:
+    description: Allows viewing own listings
+    default: false
+  vortex.player.auction.search:
+    description: Allows searching the auction house
+    default: false
+  vortex.player.party:
+    description: Grants access to party features
+    default: false
+    children:
+      vortex.player.party.create: true
+      vortex.player.party.invite: true
+      vortex.player.party.accept: true
+      vortex.player.party.decline: true
+      vortex.player.party.leave: true
+      vortex.player.party.disband: true
+      vortex.player.party.kick: true
+      vortex.player.party.promote: true
+      vortex.player.party.demote: true
+      vortex.player.party.transfer: true
+      vortex.player.party.info: true
+      vortex.player.party.gui: true
+      vortex.player.party.chat: true
+      vortex.player.party.summon: true
+      vortex.player.party.ready: true
+      vortex.player.party.rename: true
+  vortex.player.party.create:
+    description: Allows creating parties
+    default: false
+  vortex.player.party.invite:
+    description: Allows inviting players to parties
+    default: false
+  vortex.player.party.accept:
+    description: Allows accepting party invites
+    default: false
+  vortex.player.party.decline:
+    description: Allows declining party invites
+    default: false
+  vortex.player.party.leave:
+    description: Allows leaving parties
+    default: false
+  vortex.player.party.disband:
+    description: Allows disbanding parties
+    default: false
+  vortex.player.party.kick:
+    description: Allows kicking party members
+    default: false
+  vortex.player.party.promote:
+    description: Allows promoting party members
+    default: false
+  vortex.player.party.demote:
+    description: Allows demoting party members
+    default: false
+  vortex.player.party.transfer:
+    description: Allows transferring party leadership
+    default: false
+  vortex.player.party.info:
+    description: Allows viewing party info
+    default: false
+  vortex.player.party.gui:
+    description: Allows opening the party GUI
+    default: false
+  vortex.player.party.chat:
+    description: Allows using party chat
+    default: false
+  vortex.player.party.summon:
+    description: Allows summoning party members
+    default: false
+  vortex.player.party.ready:
+    description: Allows using ready checks
+    default: false
+  vortex.player.party.rename:
+    description: Allows renaming parties
+    default: false
+  vortex.admin.party:
+    description: Grants access to admin party features
+    default: false
+    children:
+      vortex.admin.party.list: true
+  vortex.admin.party.list:
+    description: Allows listing all active parties
+    default: false
